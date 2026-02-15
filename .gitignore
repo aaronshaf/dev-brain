@@ -1,0 +1,26 @@
+# Claude Code - Personal Settings & Cache
+.claude/settings.local.json
+.claude/memory/
+.claude/tasks/
+.claude/projects/
+
+# Obsidian - UI State & Cache (commit config, ignore state)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/graph.json
+.obsidian/cache
+.obsidian/plugins/*/
+.obsidian/themes/*/
+
+# Obsidian - Sync & Backup
+.obsidian/sync-config.json
+.trash/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.swp
+*~
