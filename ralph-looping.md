@@ -16,6 +16,37 @@ The Ralph Wiggum technique is an iterative AI development methodology that, in i
 ## How It Works
 
 ### Core Loop
+
+```mermaid
+stateDiagram-v2
+    [*] --> ReadTasks: Start Loop
+    ReadTasks --> PickTask: Parse task list
+    PickTask --> Implement: Select task
+    Implement --> Test: Write code
+    Test --> Commit: Tests pass
+    Commit --> Sleep: Git commit
+    Sleep --> ReadTasks: Wait interval
+
+    Test --> Debug: Tests fail
+    Debug --> Implement: Fix issues
+
+    Implement --> Error: Exception
+    Error --> Review: Analyze failure
+    Review --> Implement: Retry with fix
+
+    ReadTasks --> [*]: All tasks complete
+
+    note right of ReadTasks
+        Agent sees full
+        git history
+    end note
+
+    note right of Commit
+        Every change
+        persisted
+    end note
+```
+
 ```bash
 while true; do
   claude -p system_prompt.md
@@ -115,6 +146,40 @@ However, Ralph Loop still offers:
 - Simpler mental model for batch operations
 
 ## Comparison with [[taskmaster]]
+
+```mermaid
+graph TB
+    subgraph Ralph["Ralph Loop: Simplicity"]
+        R1[Bash Script]
+        R2[Markdown Files]
+        R3[Git Persistence]
+        R4[Autonomous Iteration]
+
+        R1 --> R4
+        R2 --> R4
+        R3 --> R4
+    end
+
+    subgraph Taskmaster["Taskmaster: Orchestration"]
+        T1[39 MCP Tools]
+        T2[Dependency Mgmt]
+        T3[Docker Sandbox]
+        T4[Multi-Agent Coord]
+
+        T1 --> T4
+        T2 --> T4
+        T3 --> T4
+    end
+
+    Ralph -.->|Simple tasks| Use1[Straightforward<br/>Sequences]
+    Taskmaster -.->|Complex tasks| Use2[Multi-Component<br/>Projects]
+
+    Use1 -.->|Grows complex| Taskmaster
+    Ralph -.->|Can combine| Taskmaster
+
+    style Ralph fill:#d4edda
+    style Taskmaster fill:#e1f5ff
+```
 
 ### Ralph Loop: Simplicity
 - Minimal implementation

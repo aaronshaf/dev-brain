@@ -80,13 +80,38 @@ def example():
 ````
 
 ### Diagrams
-Obsidian supports Mermaid diagrams:
+
+**We LOVE Mermaid diagrams!** Use them liberally where they add clarity:
+
+- **Architecture diagrams**: System components and data flow
+- **Sequence diagrams**: API interactions, request/response flows
+- **State diagrams**: Workflow states and transitions
+- **Flowcharts**: Algorithm logic, decision trees
+- **ER diagrams**: Database schemas and relationships
+- **Class diagrams**: Code structure and relationships
+
+See [[mermaid]] for comprehensive syntax reference and examples.
+
 ````markdown
 ```mermaid
 graph TD
     A[Component] --> B[Dependency]
 ```
 ````
+
+**When to use diagrams:**
+- Explaining complex system architecture
+- Documenting API flows or protocols
+- Illustrating state machines or workflows
+- Showing database schemas
+- Visualizing algorithm logic
+
+**Diagram best practices:**
+- **Split over simplify**: If a diagram would require horizontal scrolling, split it into multiple smaller diagrams
+- **One concept per diagram**: Better to have 3 clear diagrams than 1 complicated one
+- **Mobile-friendly**: Diagrams should be readable on phone screens without zooming
+
+If a concept involves multiple components, interactions, or states, consider adding a diagram!
 
 ### Skills Plugin
 This vault uses the [Obsidian Skills](https://github.com/kepano/obsidian-skills) plugin for skill tracking and progression.

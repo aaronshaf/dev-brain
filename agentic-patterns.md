@@ -13,6 +13,24 @@ Emerging patterns and practices for building software with AI agents as primary 
 
 **Inversion of Roles**: Agents execute work, engineers define objectives and provide context for agents to succeed.
 
+```mermaid
+graph TB
+    subgraph Traditional["Traditional Engineering"]
+        T1[Maximize Engineer<br/>Coding Time] --> T2[Minimize Meetings]
+        T2 --> T3[Engineers Implement]
+        T3 --> T4[Ship Features]
+    end
+
+    subgraph Agentic["Agentic Engineering"]
+        A1[Maximize Agent<br/>Utilization] --> A2[Align on Objectives]
+        A2 --> A3[Agents Implement]
+        A3 --> A4[Ship Features]
+    end
+
+    style Traditional fill:#f8d7da
+    style Agentic fill:#d4edda
+```
+
 Traditional engineering: Maximize engineer coding time → minimize meetings → ship features
 Agentic engineering: Maximize agent utilization → align on objectives → let agents ship features
 
@@ -21,6 +39,32 @@ Agentic engineering: Maximize agent utilization → align on objectives → let 
 ### Pair Prompting
 
 **Pattern**: Engineers collaborate on prompt drafting before any coding begins.
+
+```mermaid
+sequenceDiagram
+    participant Team
+    participant Prompts
+    participant Agent
+    participant Codebase
+
+    Note over Team: Morning: 1-2hrs, hands off keyboards
+    Team->>Team: Align on objectives
+    Team->>Team: Define constraints
+    Team->>Team: Set success criteria
+    Team->>Prompts: Draft prompts together
+
+    Note over Agent: Only after alignment
+    Prompts->>Agent: Provide context & goals
+    Agent->>Codebase: Implement features
+    Agent-->>Team: Results for review
+
+    alt Success
+        Team->>Agent: Ship it
+    else Needs refinement
+        Team->>Prompts: Refine objectives
+        Prompts->>Agent: Retry with clarity
+    end
+```
 
 **Implementation**:
 - First 1-2 hours each morning: hands off keyboards
@@ -49,6 +93,33 @@ Agentic engineering: Maximize agent utilization → align on objectives → let 
 ### Objective-First Specification
 
 **Pattern**: Define objectives and constraints before any implementation.
+
+```mermaid
+graph TD
+    A[1. One-Sentence Objective] --> B[2. List Constraints]
+    B --> C[3. Define Success Criteria]
+    C --> D[Agent Determines Implementation]
+
+    D --> E{Meets All<br/>Criteria?}
+    E -->|No| F[Agent Iterates]
+    F --> D
+    E -->|Yes| G[Ship It]
+
+    style A fill:#e1f5ff
+    style B fill:#fff3cd
+    style C fill:#f8d7da
+    style G fill:#d4edda
+
+    note1["What, not how"]
+    note2["Boundaries &<br/>requirements"]
+    note3["Measurable<br/>outcomes"]
+    note4["Agent chooses<br/>best approach"]
+
+    A -.-> note1
+    B -.-> note2
+    C -.-> note3
+    D -.-> note4
+```
 
 **Implementation**:
 1. Write objective in one sentence

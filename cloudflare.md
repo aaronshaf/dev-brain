@@ -18,6 +18,23 @@ Comprehensive platform for building and deploying autonomous AI agents that plan
 
 **Four-Step Agent Architecture:**
 
+```mermaid
+graph LR
+    A[1. Input Reception] --> B[2. AI Reasoning]
+    B --> C[3. Execution Guarantee]
+    C --> D[4. Action Tools]
+
+    A1[Email Workers<br/>WebSockets<br/>Voice Calls] -.-> A
+    B1[Workers AI<br/>AI Gateway<br/>External LLMs] -.-> B
+    C1[Durable Objects<br/>Workflows<br/>State Management] -.-> C
+    D1[MCP Servers<br/>Browser Automation<br/>Vectorize<br/>D1 SQL] -.-> D
+
+    style A fill:#e1f5ff
+    style B fill:#fff3cd
+    style C fill:#d4edda
+    style D fill:#f8d7da
+```
+
 1. **Input Reception** - Capture user data via Email Workers, WebSockets/Workers, or Calls (voice)
 2. **AI Reasoning** - Connect to LLMs on Workers AI or external providers through AI Gateway
 3. **Execution Guarantee** - Combine Durable Objects (state) with Workflows (orchestration) for reliable operations

@@ -9,6 +9,59 @@ status: draft
 
 Tools, platforms, and frameworks that enable AI agents to build software with humans in supportive/directive roles rather than implementation roles.
 
+## Tool Ecosystem Overview
+
+```mermaid
+graph TB
+    subgraph Assistants["AI Coding Assistants"]
+        Claude[Claude Code]
+        Cursor[Cursor]
+        Windsurf[Windsurf]
+        Copilot[GitHub Copilot]
+    end
+
+    subgraph Infrastructure["Infrastructure Platforms"]
+        CF[Cloudflare Platform]
+        Vercel[Vercel AI SDK]
+        Modal[Modal]
+    end
+
+    subgraph Orchestration["Workflow Orchestration"]
+        CFW[Cloudflare Workflows]
+        Temporal[Temporal]
+        Inngest[Inngest]
+    end
+
+    subgraph Frameworks["Agent Frameworks"]
+        LG[LangGraph]
+        Crew[CrewAI]
+        Auto[AutoGPT]
+    end
+
+    subgraph Context["Knowledge & Context"]
+        VecDB[(Vector DBs)]
+        RAG[RAG Platforms]
+        MCP[MCP Protocol]
+    end
+
+    Assistants --> Frameworks
+    Assistants --> Infrastructure
+    Frameworks --> Orchestration
+    Frameworks --> Context
+    Infrastructure --> Context
+    Orchestration --> Infrastructure
+
+    Claude -.-> MCP
+    CF -.-> CFW
+    CF -.-> VecDB
+
+    style Assistants fill:#e1f5ff
+    style Infrastructure fill:#d4edda
+    style Context fill:#fff3cd
+    style Frameworks fill:#f8d7da
+    style Orchestration fill:#e7d4f5
+```
+
 ## AI Coding Assistants
 
 ### Claude Code

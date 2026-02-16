@@ -55,6 +55,24 @@ Taskmaster is an MCP (Model Control Protocol) server that manages AI-driven deve
 
 ## Typical Workflow
 
+```mermaid
+graph TD
+    A[Create PRD] --> B[Parse Requirements]
+    B --> C[Generate Tasks]
+    C --> D[View Next Task]
+    D --> E[Implement Task]
+    E --> F{Need Breakdown?}
+    F -->|Yes| G[Expand to Subtasks]
+    F -->|No| H[Mark Complete]
+    G --> D
+    H --> I{More Tasks?}
+    I -->|Yes| D
+    I -->|No| J[Project Complete]
+
+    style A fill:#e1f5ff
+    style J fill:#d4edda
+```
+
 1. **Create PRD** (Product Requirements Document)
 2. **Parse requirements** → Generate tasks
 3. **View next task** → Get focused assignment
