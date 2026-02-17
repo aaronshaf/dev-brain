@@ -30,6 +30,22 @@ OpenClaw is an open-source framework that transforms LLMs into persistent, auton
 
 **Critical concept:** Your agent wakes up fresh every session. Memory files ARE its brain.
 
+## Production Principles
+
+Treat agents like distributed systems, not chatbots with tools.
+
+**1. Drift** - Agents scatter state everywhere (AGENTS.md, MEMORY.md, disk, databases). Enforce write locations in skills. Git-track all changes. Nightly workspace review.
+
+**2. Trust boundaries** - Untrusted input = attack surface. Separate sandboxed agents with limited skills for external content. Code routes and filters before LLM. Never reverse.
+
+**3. Autonomy calibration** - Start read-only. Graduate to filtered write (drafts, proposals, approval queues). Full write access is earned, not default.
+
+**4. Cost discipline** - Cache stable IDs. Use deterministic filtering to skip LLM when code can decide. Route routine tasks to cheaper models. Cheapest token is the one you never send.
+
+**5. Observability** - Trace any failure in 5 minutes or it's not production-ready. Log webhook status. Track cron state. Commit all changes to git. Rollback is first-class, not emergency.
+
+**Operating discipline > prompt quality.**
+
 ## VPS Deployment
 
 ### Recommended Host: Hetzner
