@@ -73,6 +73,88 @@ export class MyWorkflow extends WorkflowEntrypoint {
 }
 ```
 
+## Configuration (Wrangler)
+
+Workflows are configured via a `[[workflows]]` binding in your `wrangler.toml` / `wrangler.jsonc`.
+
+```toml
+[[workflows]]
+name = "my-workflow"      # Workflow name
+binding = "MY_WORKFLOW"  # env.MY_WORKFLOW
+class_name = "MyWorkflow" # exported class extending WorkflowEntrypoint
+```
+
+Notes:
+
+- `binding` becomes the name you call from other handlers (`env.MY_WORKFLOW.create()`, `env.MY_WORKFLOW.get(id)`).
+- You can bind to a Workflow defined in a different Worker by adding `script_name` in the workflow binding ("cross-script calls").
+- In TypeScript projects, `wrangler types` will generate an `Env` type that includes the Workflow binding.
+
+Sources: https://developers.cloudflare.com/workflows/get-started/guide/ • https://developers.cloudflare.com/workflows/build/workers-api/
+
+## Triggering + instance control
+
+You can trigger and manage Workflows from:
+
+- a `fetch` handler (HTTP)
+- a Queue consumer (`queue` handler)
+- a Cron trigger (`scheduled` handler)
+- inside Durable Objects
+
+Instance basics (Workers binding API):
+
+- Create: `const instance = await env.MY_WORKFLOW.create({ id, params })`
+- Status: `await (await env.MY_WORKFLOW.get(id)).status()`
+- Control: `pause()`, `resume()`, `terminate()`, `restart()`, `sendEvent(...)`
+
+The status returned by `instance.status()` can include values like `queued`, `running`, `paused`, `waiting` (sleep/event), `errored`, and `complete`.
+
+Sources: https://developers.cloudflare.com/workflows/build/trigger-workflows/ • https://developers.cloudflare.com/workflows/build/events-and-parameters/
+
+## Steps, retries, sleeping, and events
+
+### Step primitives
+
+- `step.do(name, [config], fn)` runs code and persists its returned (serializable) state.
+- `step.sleep(name, duration)` sleeps for a relative duration (supports human units like `"1 hour"`).
+- `step.sleepUntil(name, timestamp)` sleeps until a specific date/time.
+- `step.waitForEvent(name, { type, timeout })` blocks waiting for an external event.
+
+### Retry defaults + customization
+
+If you don’t supply a retry config, `step.do` defaults to (as documented):
+
+- retries: limit 5, delay 10s, exponential backoff
+- timeout: 10 minutes
+
+You can override per-step retry/timeout via the optional `WorkflowStepConfig`.
+
+### Forcing a non-retryable failure
+
+Throw `NonRetryableError` inside `step.do` to stop retries and fail the instance immediately.
+
+Sources: https://developers.cloudflare.com/workflows/build/workers-api/ • https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/
+
+## “Rules of Workflows” (practical gotchas)
+
+- **Make external side effects idempotent**: steps may retry, so check-before-write/charge/etc.
+- **Keep steps granular**: separate unrelated API/binding calls so failures retry the smallest unit.
+- **Don’t rely on in-memory variables across steps**: Workflows can hibernate; persist state by returning it from `step.do`.
+
+Source: https://developers.cloudflare.com/workflows/build/rules-of-workflows/
+
+## Limits (high-signal)
+
+A few notable limits (see full table):
+
+- Max steps per workflow: **1024**
+- Max `step.sleep` duration: **365 days**
+- Max persisted state per step: **1 MiB**
+- Event payload size: **1 MiB**
+- Instances in `waiting` state (sleep/retry/event) **do not count** toward concurrency limits
+
+Source: https://developers.cloudflare.com/workflows/reference/limits/
+
 ## Queues vs Workflows
 
 | Feature | Queues | Workflows |
