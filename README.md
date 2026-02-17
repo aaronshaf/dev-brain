@@ -4,7 +4,8 @@ Knowledge base for AI-assisted development and cloud platforms. Built with Obsid
 
 ## Contents
 
-- **[agentic-coding/](agentic-coding/)** - AI development patterns, OpenClaw, Taskmaster, Ralph Loop
+- **[agentic-coding/](agentic-coding/)** - AI development patterns, Taskmaster, Ralph Loop
+- **[openclaw/](openclaw/)** - 24/7 AI agents, deployment, security, reliability
 - **[cloudflare/](cloudflare/)** - Workers, AI services, Workflows, Zero Trust
 - **[[obsidian]]**, **[[mermaid]]**, **[[github-actions]]** - Tooling docs
 
