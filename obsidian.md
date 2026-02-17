@@ -7,7 +7,7 @@ status: complete
 
 # Obsidian
 
-Knowledge management system using plain-text Markdown files. Embraces "file over app" philosophy for longevity and portability.
+Obsidian is a note-taking app that stores everything as plain text files on your computer, so you own your notes forever and can open them with any text editor. It connects your notes together like a personal Wikipedia, making it perfect for building a knowledge base that grows with you.
 
 ## Core Philosophy
 
@@ -215,7 +215,7 @@ Common properties:
 
 ## AI-Assisted Patterns
 
-For AI-assisted workflows with Claude Code, see [[obsidian-claude-system]]:
+For AI-assisted workflows with Claude Code, see [[agentic-coding/obsidian-claude-system]]:
 - Progressive disclosure (4-layer context selection)
 - CLAUDE.md as system instructions
 - Vault index for orientation
@@ -223,7 +223,7 @@ For AI-assisted workflows with Claude Code, see [[obsidian-claude-system]]:
 
 ## Related Topics
 
-- [[obsidian-claude-system]] - AI-assisted knowledge system (Heinrich's approach)
+- [[agentic-coding/obsidian-claude-system]] - AI-assisted knowledge system (Heinrich's approach)
 - [[knowledge-graphs]] - Graph structures for knowledge
 - [[zettelkasten]] - Related note-taking methodology
 - [[personal-knowledge-management]] - PKM principles

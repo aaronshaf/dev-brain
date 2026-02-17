@@ -7,7 +7,7 @@ status: complete
 
 # Ralph Loop
 
-An autonomous AI agent loop that runs Claude Code repeatedly until tasks are complete. Named after The Simpsons character Ralph Wiggum, embodying persistent iteration despite setbacks.
+Ralph Loop runs Claude Code over and over on the same task until it actually works, learning from each failure. It's named after Ralph Wiggum from The Simpsons—persistent, keeps trying, eventually gets there.
 
 ## Overview
 
@@ -145,7 +145,7 @@ However, Ralph Loop still offers:
 - Git-based persistence
 - Simpler mental model for batch operations
 
-## Comparison with [[taskmaster]]
+## Comparison with Taskmaster
 
 ```mermaid
 graph TB

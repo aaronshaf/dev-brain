@@ -7,7 +7,7 @@ status: complete
 
 # Workers AI
 
-Run AI models serverlessly at the edge with GPU acceleration across 200+ cities worldwide.
+Workers AI lets you run AI models like Llama and Stable Diffusion directly in your code without setting up GPUs or managing infrastructure. You call an API, Cloudflare runs the model on their GPUs worldwide, and you only pay for what you use.
 
 ## Capabilities
 

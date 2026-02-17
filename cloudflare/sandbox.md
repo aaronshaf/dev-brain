@@ -7,7 +7,7 @@ status: complete
 
 # Cloudflare Sandbox
 
-Containerized execution environment for running commands, managing files, and exposing services via public URLs—all within secure, sandboxed containers.
+Cloudflare Sandbox gives you secure, isolated containers where you can run code, execute shell commands, and even expose web services—perfect for building code interpreters, CI/CD systems, or anywhere you need to safely run untrusted code. It's like having a temporary computer that spins up in seconds and disappears when you're done.
 
 Reference: https://sandbox.cloudflare.com/
 

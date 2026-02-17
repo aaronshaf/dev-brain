@@ -7,7 +7,7 @@ status: complete
 
 # Cloudflare Workers
 
-Serverless JavaScript/TypeScript runtime executing at the edge across Cloudflare's global network.
+Cloudflare Workers run your JavaScript/TypeScript code on Cloudflare's global network, executing in milliseconds right next to your users instead of in one distant data center. Think AWS Lambda but faster, cheaper, and automatically distributed worldwide.
 
 ## Best Practices
 

@@ -7,7 +7,7 @@ status: complete
 
 # Cloudflare Containers
 
-Run Docker containers on Cloudflare's global edge network without managing infrastructure. Currently in public beta.
+Cloudflare Containers let you deploy Docker containers to 300+ cities worldwide with zero infrastructure setup. Write a Dockerfile, run one command, and your container runs globally on Cloudflare's edge—currently in public beta.
 
 Reference: https://containers.cloudflare.com/
 

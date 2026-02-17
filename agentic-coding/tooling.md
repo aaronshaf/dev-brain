@@ -7,7 +7,7 @@ status: draft
 
 # Agentic Tooling
 
-Tools, platforms, and frameworks that enable AI agents to build software with humans in supportive/directive roles rather than implementation roles.
+Agentic tooling includes the AI code editors, frameworks, and platforms that let AI agents write the actual code while you focus on directing what needs to be built. These tools turn you from a coder into an orchestrator.
 
 ## Tool Ecosystem Overview
 
@@ -397,8 +397,8 @@ The agentic tooling landscape changes rapidly. Tools to watch:
 
 ## Related
 
-- [[agentic-patterns]]
-- [[agentic-anti-patterns]]
+- [[patterns]]
+- [[anti-patterns]]
 - [[cloudflare]]
 
 ## References

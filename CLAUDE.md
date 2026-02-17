@@ -6,7 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is an Obsidian vault for programming, coding, and architecture knowledge. It contains markdown-based notes using Obsidian conventions.
 
-**Communication preference:** Keep responses concise.
+**Communication preferences:**
+- Keep responses concise
+- Don't use emojis unless absolutely appropriate (e.g., in UI mockups or when explicitly requested)
 
 ## Obsidian Conventions
 
@@ -186,7 +188,31 @@ Create links to related notes when appropriate:
 - The relationship is too vague or distant
 - Over-linking makes text hard to read
 
-### 3. Well-Structured Content
+### 3. Accessible Introduction
+
+**Every note must start with a super accessible, intelligible, friendly, intuitive intro (1-2 sentences).**
+
+- Write for someone who's never heard of the topic
+- Use plain language, avoid jargon
+- Explain *what it is* and *why it matters* in simple terms
+- Save technical details for later sections
+
+**Good example:**
+```markdown
+# Zero Trust
+
+Zero Trust means nobody gets access by default—not even people inside your network. Every person and device must prove who they are before accessing any resource, making it way more secure than traditional VPNs that trust anyone who logs in once.
+```
+
+**Bad example:**
+```markdown
+# Zero Trust
+
+Cloudflare's Zero Trust platform replaces traditional VPNs and perimeter-based security with identity-centric access control, applying the principle of "never trust, always verify" to every request.
+```
+(Too technical, assumes knowledge of perimeter-based security and identity-centric access control)
+
+### 4. Well-Structured Content
 
 - **Clear heading hierarchy**: Use ## for main sections, ### for subsections
 - **Code examples**: Use triple backticks with language identifiers
@@ -216,7 +242,7 @@ status: complete
 
 # Async/Await in Rust
 
-Brief description of the concept.
+Async/await lets your Rust program do multiple things at once without blocking—like downloading files while processing data. It's Rust's way of writing non-blocking code that looks like regular sequential code.
 
 ## Prerequisites
 

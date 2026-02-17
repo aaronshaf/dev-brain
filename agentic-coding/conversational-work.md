@@ -7,9 +7,7 @@ status: complete
 
 # Conversational Work
 
-> **"From us checking in with the bot → to the bot checking in with us"**
-
-The shift from synchronous chat interfaces to asynchronous agent orchestration as the primary way humans accomplish work.
+Conversational work means AI agents work for you in the background and check in when they need input, instead of you sitting there chatting with them step-by-step. You wake up to completed tasks rather than spending your day prompting bots.
 
 ## The Paradigm Shift
 
@@ -335,7 +333,7 @@ graph TB
 
 ### 4. Cost
 **Issue:** Token consumption for complex workflows
-**Solution:** Optimize for human time, not compute cost (see [[agentic-patterns]])
+**Solution:** Optimize for human time, not compute cost (see [[patterns]])
 
 ## Real-World Example: Sales ROI Analysis
 
@@ -387,8 +385,8 @@ graph TB
 
 ## Related Patterns
 
-- [[agentic-patterns]] - Maximize agent utilization
-- [[agentic-tooling]] - MCP and integration standards
+- [[patterns]] - Maximize agent utilization
+- [[tooling]] - MCP and integration standards
 - [[openclaw]] - OpenClaw implementation details
 - [[taskmaster]] - Task orchestration for agents
 

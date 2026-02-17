@@ -7,7 +7,7 @@ status: complete
 
 # GitHub Actions
 
-GitHub Actions is a CI/CD platform that allows you to automate workflows directly in your GitHub repository. Workflows are triggered by events (push, PR, schedule, manual dispatch) and execute jobs on GitHub-hosted or self-hosted runners.
+GitHub Actions automatically runs tasks whenever something happens in your repo—like running tests when you push code or deploying your app when you merge a pull request. It's GitHub's built-in automation system that saves you from manually running the same commands over and over.
 
 ## Core Concepts
 

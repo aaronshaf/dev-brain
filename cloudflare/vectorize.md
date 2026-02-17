@@ -7,7 +7,7 @@ status: complete
 
 # Cloudflare Vectorize
 
-Vector database for building semantic search, recommendations, and AI applications on Cloudflare's edge network.
+Vectorize stores AI embeddings (high-dimensional vectors) and lets you search for similar items, like finding documents related to a question or products similar to what a user likes. It powers semantic search and recommendation systems without you managing database infrastructure.
 
 ## Overview
 

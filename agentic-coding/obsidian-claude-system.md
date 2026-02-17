@@ -7,7 +7,7 @@ status: complete
 
 # Obsidian + Claude Code: Knowledge System Architecture
 
-Building an AI-assisted knowledge system using Obsidian vaults as operating systems for thinking. Based on Heinrich's production patterns.
+This system turns your Obsidian vault into an operating system where Claude Code helps you capture, organize, and build on your knowledge automatically. Instead of taking notes, you operate a system that takes notes for you—Claude does the writing, you do the thinking.
 
 ## Core Philosophy
 

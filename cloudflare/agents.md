@@ -7,7 +7,7 @@ status: complete
 
 # Cloudflare Agents
 
-Comprehensive platform for building and deploying autonomous AI agents that plan, reason, and execute tasks independently.
+Cloudflare Agents are AI systems that can plan out tasks, make decisions, and execute actions on their own without you telling them every step. Think of it like an AI assistant that can figure out how to solve problems and actually do the work, not just answer questions.
 
 Reference: https://agents.cloudflare.com/
 

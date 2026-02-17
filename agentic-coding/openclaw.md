@@ -7,12 +7,13 @@ status: complete
 
 # OpenClaw: AI Agent Setup & Patterns
 
-Comprehensive guide to deploying, securing, and operating OpenClaw AI agents based on battle-tested patterns from production deployments.
+OpenClaw is a framework that lets you run AI agents 24/7 on a server, giving them memory, tools, and the ability to complete tasks while you sleep. This guide covers how to deploy, secure, and run OpenClaw agents in production based on real-world experience.
 
 ## Table of Contents
 - [Overview](#overview)
 - [VPS Deployment](#vps-deployment)
 - [Memory Architecture](#memory-architecture)
+- [Configuration Files: Teaching Your Agent](#configuration-files-teaching-your-agent)
 - [Agent Patterns](#agent-patterns)
 - [Security](#security)
 - [Cost Optimization](#cost-optimization)
@@ -135,6 +136,94 @@ The consolidation script should:
 5. Find and flag outdated entries
 
 **Critical:** Never let memory consolidation run fully autonomous. Always human-in-the-loop.
+
+## Configuration Files: Teaching Your Agent
+
+**The Problem:** Your agent wakes up fresh every session. It knows WHERE it saved things when you ask, but doesn't think to check there FIRST.
+
+**Example failure pattern:**
+```
+User: "Deploy to staging"
+Agent: "What are your staging credentials?"
+User: "You already saved them!"
+Agent: "Oh yes, they're in ~/.env. Let me read that..."
+```
+
+**The agent wasn't stupid - it just didn't have a rule to check first.**
+
+### AGENTS.md: The Main Instruction File
+
+This is your workspace-level instruction file. Add rules here to prevent "dumb questions":
+
+```markdown
+# AGENTS.md
+
+## Before Asking Me For Things
+
+- Before asking for credentials, check: ~/.env, ~/.openclaw/credentials/, memory/secrets.md
+- Before asking for API documentation, check: memory/apis.md, project README
+- Before asking what we're working on, read: memory/active-tasks.md
+- Before asking for project structure, run: tree -L 2
+
+## Tool Check Pattern
+
+Before saying "I can't do X", check TOOLS.md for relevant tools.
+
+## Memory Check Pattern
+
+Before asking questions about past decisions, check:
+1. memory/feedback.json (past approvals/rejections)
+2. memory/lessons.md (learned patterns)
+3. memory/projects.md (project-specific context)
+
+## Default Behaviors
+
+- Always verify output after generating (ls, curl, etc.)
+- Always use sub-agents for parallel work (>3 similar tasks)
+- Always log important decisions to memory/decisions.md
+- Always check cost after tasks >$1 (flag if >2x budget)
+```
+
+### TOOLS.md: Available Capabilities
+
+Document what tools/integrations you have:
+
+```markdown
+# TOOLS.md
+
+## Installed
+
+- Cloudflare API (workers, pages, DNS)
+- GitHub CLI (`gh`)
+- Stripe API (read-only)
+- Notion API
+- Telegram bot
+
+## Authentication
+
+All credentials in: ~/.openclaw/credentials/
+
+## Before You Say "I Can't"
+
+Check this file. If a tool is listed, you CAN do it.
+```
+
+### The Configuration Hierarchy
+
+```
+AGENTS.md       → Behavioral rules, default actions
+MEMORY.md       → Identity, core capabilities (keep <200 lines)
+SOUL.md         → Hard boundaries, security rules (NEVER override)
+TOOLS.md        → Available integrations, capabilities
+memory/*.md     → Detailed context, project data
+```
+
+**Think of it like onboarding a new employee:**
+- Day 1: They ask dumb questions
+- Week 2: You add rules to the handbook
+- Month 3: They check the handbook first
+
+**Same with your agent - capture repetitive corrections as rules in AGENTS.md.**
 
 ### active-tasks.md: The Crash Recovery Pattern
 
@@ -840,6 +929,7 @@ cat workspace/SOUL.md | grep "prompt injection"
 
 ## Related Topics
 
+- [[code-factory]] - Repository architecture for AI-driven development
 - [[taskmaster]] - Task breakdown and project management
 - [[ai-agents]] - General agent architectures and patterns
 - [[prompt-engineering]] - Crafting effective prompts for agents
@@ -852,3 +942,4 @@ cat workspace/SOUL.md | grep "prompt injection"
 - Larry's X Account: https://x.com/LarryClawerence
 - Oliver Henry's Case Study: Full TikTok automation breakdown
 - Eric Osiu's 30 Jobs/Day Post: Production reliability patterns
+- Configuration Pattern: https://x.com/cathrynlavery/status/2023237223651393684

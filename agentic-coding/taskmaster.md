@@ -7,7 +7,7 @@ status: complete
 
 # Taskmaster
 
-An AI-powered task-management system designed for AI-driven development workflows. Works with Cursor, Lovable, Windsurf, Roo, Claude Code, and other AI code editors.
+Taskmaster breaks down big projects into small tasks that AI agents can tackle one at a time, keeping them focused and productive. It works with Claude Code, Cursor, and other AI editors to parse requirements, track progress, and manage dependencies automatically.
 
 ## Overview
 

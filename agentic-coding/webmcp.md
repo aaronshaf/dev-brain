@@ -8,9 +8,7 @@ source: https://www.youtube.com/watch?v=sOPhVSeimtI
 
 # WebMCP
 
-Chrome's WebMCP proposal enables AI agents to interact with web applications through explicitly published tool schemas rather than browser automation, screenshots, or HTML parsing.
-
-**Core premise:** Agents shouldn't have to screenshot or dump HTML to use your app. Just expose your tools via HTML form attributes or define the schemas in JavaScript.
+WebMCP lets websites tell AI agents exactly what actions they can perform—like "add item to cart" or "send message"—without the AI having to screenshot the page or parse HTML. It's like giving AI agents an instruction manual for your website built right into the webpage.
 
 ## What is WebMCP?
 

@@ -7,7 +7,7 @@ status: complete
 
 # Mermaid Diagrams
 
-Text-based diagramming and charting tool that renders in Markdown. Supported in GitHub, GitLab, Obsidian, and many other platforms.
+Mermaid lets you create diagrams and flowcharts using simple text instead of dragging boxes around in a visual editor. You write code like `graph TD; A-->B` and it automatically renders as a beautiful diagram in GitHub, Obsidian, and many other tools.
 
 ## Supported Diagram Types
 

@@ -7,7 +7,7 @@ status: complete
 
 # Cloudflare AI Search
 
-Managed search service for building AI-powered search and RAG (retrieval-augmented generation) applications. Automatically creates continuously updating indexes from your data sources.
+AI Search automatically indexes your documents and lets users search them with natural language questions that get AI-generated answers. It handles all the embedding, indexing, and retrieval work so you just point it at your data and get a working search API.
 
 ## Key Concept: Two API Endpoints
 

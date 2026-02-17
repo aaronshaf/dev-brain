@@ -7,7 +7,7 @@ status: complete
 
 # Cloudflare Platform
 
-Cloudflare's developer platform enables building serverless applications with AI capabilities, durable workflows, and edge compute - all without managing infrastructure.
+Cloudflare lets you build and deploy apps that run instantly worldwide without managing servers. It combines serverless functions, AI models, databases, and more into one platform where you only pay for what you use.
 
 ## Documentation Structure
 

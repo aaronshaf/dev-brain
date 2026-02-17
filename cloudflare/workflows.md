@@ -7,7 +7,7 @@ status: complete
 
 # Cloudflare Workflows
 
-Build reliable multi-step applications that chain operations, automatically retry failures, and persist state - running from seconds to weeks without infrastructure management.
+Workflows let you write multi-step processes that can run for hours or days, automatically retry when things fail, and pause to wait for events like user approvals. It's like having a reliable assistant that never forgets where it left off, even if something crashes.
 
 ## Key Features
 

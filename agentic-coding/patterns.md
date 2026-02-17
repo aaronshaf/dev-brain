@@ -7,7 +7,7 @@ status: draft
 
 # Agentic Patterns
 
-Emerging patterns and practices for building software with AI agents as primary actors rather than human engineers as primary implementers.
+Agentic patterns flip traditional software development: instead of engineers writing code, AI agents do the implementation while engineers define what success looks like. Think of it as managing a team where you set objectives and the agents figure out how to build it.
 
 ## Core Philosophy
 
@@ -350,5 +350,5 @@ Let agent determine:
 ## References
 
 - [No Coding Before 10am - Michael Bloch](https://x.com/michaelxbloch/status/2022678437362598163)
-- [[agentic-anti-patterns]]
-- [[agentic-tooling]]
+- [[anti-patterns]]
+- [[tooling]]

@@ -7,7 +7,7 @@ status: complete
 
 # Writing PRDs for AI-Coded Projects
 
-Best practices for writing Product Requirement Documents (PRDs) that work effectively with AI coding agents like Claude Code, Cursor, and GitHub Copilot.
+Writing PRDs for AI agents is different than writing for human developers—you define what success looks like, not how to code it. This guide shows you how to write requirements that AI agents can turn directly into working software.
 
 ## Five Core Principles
 

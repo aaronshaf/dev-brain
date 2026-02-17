@@ -7,7 +7,7 @@ status: draft
 
 # Agentic Anti-Patterns
 
-Common mistakes teams make when adopting AI agents for software development. These patterns emerge from traditional engineering culture that doesn't translate to agentic workflows.
+These are the common mistakes teams make when they try to use AI agents like they'd work with human developers. Most of these traps come from old habits that worked for traditional coding but actually slow you down when agents are doing the implementation.
 
 ## Process Anti-Patterns
 
@@ -21,7 +21,7 @@ Common mistakes teams make when adopting AI agents for software development. The
 - Wasted agent utilization on throwaway work
 - Context switches as requirements clarify mid-implementation
 
-**Solution**: [[agentic-patterns#Pair Prompting]] - spend first hours aligning on objectives before any coding
+**Solution**: [[patterns#Pair Prompting]] - spend first hours aligning on objectives before any coding
 
 **Red flags**:
 - "Let's just start coding and see what we need"
@@ -44,7 +44,7 @@ Common mistakes teams make when adopting AI agents for software development. The
 
 **Why it fails**: You're doing the agent's job (figuring out implementation) instead of your job (defining success).
 
-**Solution**: [[agentic-patterns#Spec Outcomes, Not Process]]
+**Solution**: [[patterns#Spec Outcomes, Not Process]]
 
 **What to write instead**:
 ```markdown
@@ -76,7 +76,7 @@ Success criteria:
 - Debugging repeated failures
 - Learning what the agent is doing
 
-**Solution**: [[agentic-patterns#Review Output, Not Code]] - test against objectives, ship if it passes
+**Solution**: [[patterns#Review Output, Not Code]] - test against objectives, ship if it passes
 
 ### Keeping Dead Code Paths
 
@@ -100,7 +100,7 @@ def process_user(user):
 - Agents might call deprecated functions
 - Future prompts need to specify "use the new one"
 
-**Solution**: [[agentic-patterns#Kill Old Ways Immediately]] - delete old code the moment new code ships
+**Solution**: [[patterns#Kill Old Ways Immediately]] - delete old code the moment new code ships
 
 ### Maximizing Human Coding Time
 
@@ -131,7 +131,7 @@ def process_user(user):
 
 **Why it fails**: "If a human is repeating a task, the system isn't set up right."
 
-**Solution**: [[agentic-patterns#Think in Systems]] - automate after the second repetition
+**Solution**: [[patterns#Think in Systems]] - automate after the second repetition
 
 ## Code Anti-Patterns
 
@@ -154,7 +154,7 @@ def extract_odd_numbers(numbers):
 
 **Why it fails**: Agents read code to understand intent before regenerating. Clever code obscures intent.
 
-**Solution**: [[agentic-patterns#Code as Context, Not Library]] - optimize for comprehension
+**Solution**: [[patterns#Code as Context, Not Library]] - optimize for comprehension
 
 ### Building Reusable Abstractions Too Early
 
@@ -184,7 +184,7 @@ def extract_odd_numbers(numbers):
 - Prevents agents from making reasonable implementation choices
 - Requires schema updates for small changes
 
-**Solution**: [[agentic-patterns#Define Rules, Not Structure]] - set constraints and conventions, let agents determine details
+**Solution**: [[patterns#Define Rules, Not Structure]] - set constraints and conventions, let agents determine details
 
 ### Function-Oriented Interfaces
 
@@ -196,7 +196,7 @@ def extract_odd_numbers(numbers):
 - Changes require updating all callers
 - Harder for agents to discover capabilities
 
-**Solution**: [[agentic-patterns#Data-Driven Interfaces]] - define data structures with clear semantics
+**Solution**: [[patterns#Data-Driven Interfaces]] - define data structures with clear semantics
 
 ## Team Anti-Patterns
 
@@ -213,7 +213,7 @@ def extract_odd_numbers(numbers):
 **What to standardize**: Data patterns, objective formats, component responsibilities
 **What to leave flexible**: IDE choice, prompting style, local workflows
 
-**Solution**: [[agentic-patterns#Individual Autonomy, Shared Interfaces]]
+**Solution**: [[patterns#Individual Autonomy, Shared Interfaces]]
 
 ### Treating Agents Like Junior Developers
 
@@ -252,7 +252,7 @@ def extract_odd_numbers(numbers):
 
 **When token cost matters**: At massive scale (millions of requests/day), not during development
 
-**Solution**: [[agentic-patterns#Optimize for Time, Not Tokens]]
+**Solution**: [[patterns#Optimize for Time, Not Tokens]]
 
 ### Building for Future-Proofing
 
@@ -265,7 +265,7 @@ def extract_odd_numbers(numbers):
 - Rewrites are normal in fast-moving AI landscape
 - 3-6 month lifespan for architectural decisions
 
-**Solution**: [[agentic-patterns#Assume 3-Month Expiration]] - build modular, optimize for changeability
+**Solution**: [[patterns#Assume 3-Month Expiration]] - build modular, optimize for changeability
 
 ### Silent Anti-Pattern Accumulation
 
@@ -278,7 +278,7 @@ def extract_odd_numbers(numbers):
 - Technical debt accumulates quickly
 - Hard to unwind after becoming established
 
-**Solution**: [[agentic-patterns#Immediate Anti-Pattern Flagging]] - create culture of immediate feedback
+**Solution**: [[patterns#Immediate Anti-Pattern Flagging]] - create culture of immediate feedback
 
 ## Organizational Anti-Patterns
 
@@ -340,8 +340,8 @@ Your team might be falling into anti-patterns if:
 
 ## Related
 
-- [[agentic-patterns]]
-- [[agentic-tooling]]
+- [[patterns]]
+- [[tooling]]
 
 ## References
 
