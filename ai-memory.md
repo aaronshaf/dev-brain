@@ -159,6 +159,7 @@ graph TD
 ## Also Worth Knowing
 
 - **LangMem** — LangChain's built-in memory layer, good if you're already in the LangChain ecosystem
+- **LlamaIndex** — not a memory layer, but the right tool if you need to search a corpus of documents; see [[rag]]
 - **Graphiti** — the open-source knowledge graph engine powering Zep, usable standalone
 - **OpenAI Memory** — built into ChatGPT, not available for external agents
 
