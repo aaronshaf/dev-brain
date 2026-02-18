@@ -132,6 +132,32 @@ Full list: https://developers.cloudflare.com/ai-gateway/providers/
 
 **Rate Limiting** - Prevent bill shock by capping requests per user or globally.
 
+## Dynamic Routes
+
+Dynamic Routes let you configure request routing logic inside AI Gateway itself—no code changes or redeployments needed. Routes can be created via the dashboard UI or REST API (simple JSON structure).
+
+### Use Cases
+
+**A/B testing models** - Split traffic by percentage to compare models head-to-head (e.g. 50% Qwen vs 50% Kimi). The response includes which model was used, so you can measure performance. Changes take effect immediately without touching your app.
+
+**Tiered routing by plan** - Route free users to smaller, cheaper models and paid users to more powerful ones. Pass the user's plan via request headers or metadata, then branch in AI Gateway accordingly.
+
+**Rate-limit-triggered fallback** - Once a paid user hits a rate limit, automatically switch them to a cheaper model (or block entirely) rather than erroring out.
+
+**Complex branching** - Combine the above with nested if/else logic: split paid/free first, then A/B test within each branch using percentages.
+
+### Sticky Sessions (Not Yet Built-in)
+
+AI Gateway doesn't natively support sticky routing (assigning a user to one model and keeping them there across requests). This could be jarring for conversational apps where model-hopping changes behavior mid-session. Workaround: track the assigned model in your own session store and pass it as a header/metadata hint to influence routing.
+
+### Response Metadata
+
+The AI Gateway response includes the model that actually served the request—useful for logging, evaluation, and cost attribution when doing A/B tests.
+
+### Pricing
+
+Dynamic routes are **free**.
+
 ## Workers Binding
 
 For Cloudflare Workers, use native binding instead of HTTP:
