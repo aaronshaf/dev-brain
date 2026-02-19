@@ -170,6 +170,111 @@ cloudflared tunnel --url http://localhost:3000
 
 Generates temporary URL like `https://random-words.trycloudflare.com`
 
+## Workers VPC Services
+
+Workers VPC lets Cloudflare Workers reach private services through a tunnel—without ever exposing them publicly. The Worker acts as a controlled gateway (auth, request shaping, etc.).
+
+```mermaid
+graph LR
+    Client -->|HTTPS| Worker[CF Worker]
+    Worker -->|VPC binding| VPC[VPC Service]
+    VPC -->|Tunnel| cloudflared[cloudflared]
+    cloudflared -->|localhost:PORT| Service[Private Service]
+
+    style Worker fill:#f38020,color:#fff
+```
+
+> Workers VPC is currently in beta and free on all Workers plans.
+
+### Create a VPC Service
+
+**Via dashboard:** Workers VPC → VPC Services → Create VPC Service → configure tunnel, hostname (`localhost`), port
+
+**Via CLI:**
+```bash
+npx wrangler vpc service create my-service \
+  --type http \
+  --tunnel-id <TUNNEL_ID> \
+  --hostname localhost \
+  --http-port 8080
+```
+
+### Bind in `wrangler.jsonc`
+
+```json
+{
+  "vpc_services": [
+    {
+      "binding": "VPC_SERVICE",
+      "service_id": "<YOUR_VPC_SERVICE_ID>",
+      "remote": true
+    }
+  ]
+}
+```
+
+`env.VPC_SERVICE` behaves like a `fetch`-able binding in your Worker.
+
+### Pattern: Worker as Reverse Proxy
+
+A Worker can proxy HTTP and WebSocket traffic to a private service via VPC:
+
+```
+GET  /app/*                → serve SPA, proxy to private UI
+POST /v1/chat/completions  → proxy to local LLM OpenAI-compatible API
+WS   /                     → bridge WebSocket for real-time chat
+```
+
+This pattern works for any self-hosted service (local LLMs, n8n, Home Assistant, etc.).
+
+### Securing with Cloudflare Access
+
+Combine with Cloudflare Access to require authentication:
+
+**Browser users** → redirected to login (Google, GitHub, etc.)
+**Programmatic/API users** → use Service Tokens
+
+Service Token requests include:
+```http
+CF-Access-Client-Id: <CLIENT_ID>
+CF-Access-Client-Secret: <CLIENT_SECRET>
+```
+
+Create tokens in Zero Trust → Access → Service Tokens. Add a policy with action **Service Auth**.
+
+**Validate Access JWT in a Worker:**
+```typescript
+// src/middleware/auth.ts
+export async function authMiddleware(c, next) {
+  const jwt = c.req.header('Cf-Access-Jwt-Assertion');
+  // validate against POLICY_AUD and TEAM_DOMAIN JWKS
+  if (!valid) return c.text('Unauthorized', 401);
+  await next();
+}
+```
+
+Set secrets:
+```bash
+npx wrangler secret put POLICY_AUD   # AUD tag from Access app settings
+npx wrangler secret put MY_APP_TOKEN
+```
+
+### Quick Setup Checklist
+
+1. Install `cloudflared` on private machine, connect tunnel
+2. Create VPC Service pointing to `localhost:<port>`
+3. Deploy Worker with VPC binding + Access auth middleware
+4. Enable Cloudflare Access on Worker (Settings → Domains & Routes)
+5. Set `POLICY_AUD` and app secrets via `wrangler secret put`
+6. (Optional) Add custom domain under Worker → Settings → Triggers
+
+### References
+
+- [Harshil's OpenClaw + Workers VPC tutorial](https://x.com/harshil1712/status/2019098936838090804)
+- [Workers VPC docs](https://developers.cloudflare.com/workers/vpc/)
+
+---
+
 ## Integration with Cloudflare Access
 
 Add authentication to tunneled services:
