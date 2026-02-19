@@ -195,9 +195,27 @@ if ! grep -q "$(date +%Y-%m-%d)" /tmp/digest-sent.log; then
 fi
 ```
 
+## Recommended Cron Jobs
+
+Three crons worth setting up for any production deployment:
+
+```bash
+# 1. Session cleanup — every 72 hours
+# Deletes bloated session files that slow down your agent
+0 0 */3 * * openclaw sessions cleanup --older-than 72h
+
+# 2. Silent backups — every 2 hours
+# Git push workspace so you never lose config/memory
+0 */2 * * * cd ~/.openclaw && git add -A && git commit -m "auto backup" && git push
+
+# 3. Daily security audit — every morning (see [[security]])
+0 7 * * * openclaw security audit --fix
+```
+
 ## Related Topics
 
 - [[memory]] - active-tasks.md for crash recovery
 - [[patterns]] - Sub-agent verification patterns
 - [[troubleshooting]] - Common failure modes
 - [[cost-optimization]] - Cost tracking per deliverable
+- [[security]] - Security audit details

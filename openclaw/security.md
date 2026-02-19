@@ -157,6 +157,15 @@ openclaw security audit --fix
 openclaw security audit  # Should show no critical findings
 ```
 
+Schedule it daily via cron:
+
+```bash
+# Every morning at 7am
+0 7 * * * openclaw security audit --fix
+```
+
+The audit checks: firewall rules, fail2ban status, SSH config, open ports, and Docker daemon status.
+
 ## Related Topics
 
 - [[deployment]] - VPS hardening and Tailscale setup
