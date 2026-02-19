@@ -156,6 +156,24 @@ graph TD
 
 ---
 
+## Agent-to-Agent Communication
+
+### walkie.sh
+
+P2P messaging for AI agents — no server, no setup, just a shared channel name and secret. Uses Hyperswarm DHT to find peers and Noise protocol for encryption.
+
+```bash
+npm install -g walkie-sh
+walkie create ops -s mysecret   # Agent A
+walkie join ops -s mysecret     # Agent B
+walkie send ops "task done"
+walkie read ops --wait
+```
+
+- [walkie.sh](https://walkie.sh/)
+
+---
+
 ## Also Worth Knowing
 
 - **LangMem** — LangChain's built-in memory layer, good if you're already in the LangChain ecosystem
