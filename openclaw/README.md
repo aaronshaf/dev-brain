@@ -15,6 +15,7 @@ OpenClaw is a framework that lets you run AI agents 24/7 on a server, giving the
 - **[[memory]]** - Memory architecture, MEMORY.md strategy, file organization
 - **[[configuration]]** - AGENTS.md, TOOLS.md, SOUL.md, teaching your agent
 - **[[patterns]]** - Sub-agents, cron vs heartbeats, skill routing
+- **[[skills]]** - ClawHub, distribution, publishing, repo structure
 - **[[security]]** - SOUL.md boundaries, Docker sandbox, threat model
 - **[[cost-optimization]]** - Model selection, spending limits, cost tracking
 - **[[reliability]]** - Verification, feedback loops, self-healing audits

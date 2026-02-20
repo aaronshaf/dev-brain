@@ -20,6 +20,7 @@ graph TD
 
     subgraph "AI Agent Tools"
         PWMCP[Playwright MCP]
+        BMCP[BrowserMCP]
         AB[agent-browser]
     end
 
@@ -29,6 +30,7 @@ graph TD
 
     PW -->|drives| Browser
     PWMCP -->|exposes accessibility tree via MCP| Agent[AI Agent]
+    BMCP -->|Chrome extension bridges to existing session| Agent
     AB -->|compact refs + annotated screenshots| Agent
     WMCP -->|website registers tools| Agent
 
@@ -143,6 +145,48 @@ npx @playwright/mcp@latest \
 ### Limitation
 
 Accessibility tree dumps can be verbose—large pages produce large outputs that consume significant context. See [[#agent-browser]] for a more token-efficient alternative.
+
+---
+
+## BrowserMCP
+
+`@browsermcp/mcp` is an MCP server that connects to your **existing logged-in Chrome session** via a Chrome extension. Unlike Playwright MCP (which launches a fresh browser), BrowserMCP co-opts your real browser — meaning you get your actual cookies, authenticated sessions, and local storage without any credential setup.
+
+### Key difference from Playwright MCP
+
+| | Playwright MCP | BrowserMCP |
+|---|---|---|
+| **Browser** | Launches new headless instance | Attaches to your running Chrome |
+| **Auth** | Must inject cookies manually | Inherits your real session |
+| **Install** | npx only | Requires Chrome extension + MCP server |
+| **Use case** | Fresh/isolated automation | Authenticated scraping, session extraction |
+
+### Install / Configure
+
+1. Install the [BrowserMCP Chrome extension](https://chrome.google.com/webstore/detail/browsermcp) from the Chrome Web Store
+2. Add to MCP config:
+
+```bash
+claude mcp add browsermcp -s user -- npx @browsermcp/mcp@latest
+```
+
+Or manually in `~/.claude/mcp.json`:
+```json
+{
+  "mcpServers": {
+    "browsermcp": {
+      "command": "npx",
+      "args": ["@browsermcp/mcp@latest"]
+    }
+  }
+}
+```
+
+3. When Claude first uses a BrowserMCP tool, the extension shows an "Allow" prompt in Chrome — click it.
+
+### Key Use Case: Auth Seed Extraction
+
+BrowserMCP is ideal for extracting auth credentials from a live session (cookies, tokens, headers) to seed other tools like `agent-browser` or direct API calls. See the **Auth Bridging Pattern** below.
 
 ---
 
