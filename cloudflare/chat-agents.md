@@ -9,6 +9,20 @@ status: complete
 
 Chat agents let you build AI-powered chat interfaces backed by a Cloudflare Durable Object—messages persist automatically in SQLite, streams resume on disconnect, and multiple browser tabs stay in sync in real time.
 
+## Workflows vs AIChatAgent — which to use?
+
+| | Workflows | AIChatAgent (Agents SDK) |
+|---|---|---|
+| **Pattern** | Async multi-step pipeline | Synchronous back-and-forth chat |
+| **State** | Step outputs only | Full SQLite conversation history per session |
+| **Streaming** | Not built-in | Native resumable streaming |
+| **Latency** | High (job-queue model) | Low (direct WebSocket) |
+| **Best for** | Research reports, ETL, retries | Chatbots, assistants, RAG Q&A |
+
+**Rule of thumb:** If the user is waiting for a reply, use `AIChatAgent`. If you're running a background job and posting results later, use Workflows.
+
+AIChatAgent v0.5.0 (Feb 2026) rewrote `@cloudflare/ai-chat` with better streaming, data parts, and multi-tab sync.
+
 See also: [[agents]], [[durable-objects]]
 
 Reference: https://developers.cloudflare.com/agents/api-reference/chat-agents/
