@@ -22,6 +22,8 @@ Agentic coding represents a paradigm shift from traditional software engineering
 
 - [[patterns]] - Best practices for agentic workflows
 - [[anti-patterns]] - Common mistakes to avoid
+- [[red-green-tdd]] - Test-driven development as an agent guardrail
+- [[ephemeral-sandboxes]] - Throwaway execution environments for agents
 - [[tooling]] - Tools and integrations for agentic development
 
 ### Agent Systems
