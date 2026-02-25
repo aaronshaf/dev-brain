@@ -299,6 +299,59 @@ graph LR
 
 ---
 
+## Autonomous Dogfooding (agent-browser skill)
+
+The `dogfood` skill for `agent-browser` automates exploratory QA—it navigates your app like a real user, probes for issues, and produces a structured report with reproduction evidence. No test scripts, no manual QA steps.
+
+### Install
+
+```bash
+npx skills add vercel-labs/agent-browser --skill dogfood
+```
+
+### Usage
+
+```bash
+dogfood https://your-app.com
+```
+
+### What It Produces
+
+A markdown report with 5–10 documented issues, each containing:
+- Severity rating (critical / high / medium / low)
+- Category (visual, functional, console error, etc.)
+- Step-by-step reproduction instructions
+- Annotated screenshots
+- Video evidence for interactive bugs
+- Console errors or failed network requests when relevant
+
+### How It Works (6 Phases)
+
+1. **Initialize** — set up output directories and session state
+2. **Authenticate** — handle login flows; saves session for reuse
+3. **Orient** — take initial screenshots to understand page structure
+4. **Explore** — systematically visit pages, click buttons, fill forms, test edge cases
+5. **Document** — capture each issue with proof (screenshot + optional video)
+6. **Wrap up** — finalize and write the report
+
+### When to Use
+
+- Pre-launch sanity checks on any URL
+- Catching visual regressions without writing tests
+- Auditing third-party pages you don't control
+- Getting a baseline issue list before starting a new project
+
+### Output Structure
+
+```
+dogfood-output/
+  report.md          # structured issue list
+  screenshots/       # annotated per-issue screenshots
+  videos/            # repro recordings for interactive bugs
+```
+
+---
+
 ## WebMCP
 
 WebMCP flips the model: instead of an agent scraping or automating a website from the outside, the **website itself registers callable tools** the agent can invoke directly.

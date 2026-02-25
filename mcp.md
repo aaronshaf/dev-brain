@@ -107,6 +107,10 @@ The real power is combining both: Portals consolidate multiple servers behind on
 | Portal (no Code Mode) | 1 | 50K+ |
 | Portal + Code Mode | 1 | ~1,000 |
 
+## Authentication
+
+See [[mcp-auth]] for full details on MCP authentication and authorization, including OAuth 2.1 flows, API key patterns, Cloudflare Workers auth, and the evolving spec.
+
 ## Variants
 
 - **[[webmcp|WebMCP]]** — browser-side spec where websites expose tools directly in HTML/JS, no separate server needed

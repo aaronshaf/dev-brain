@@ -1,0 +1,70 @@
+filters:
+  and:
+    - 'file.ext == "md"'
+    - 'file.name != "CLAUDE"'
+    - 'file.name != "README"'
+
+formulas:
+  last_updated: 'file.mtime.relative()'
+  backlink_count: 'file.backlinks.length'
+  link_count: 'file.links.length'
+  tag_list: 'if(file.tags.length > 0, file.tags.join(", "), "")'
+
+properties:
+  status:
+    displayName: Status
+  difficulty:
+    displayName: Difficulty
+  formula.last_updated:
+    displayName: Updated
+  formula.backlink_count:
+    displayName: Backlinks
+  formula.link_count:
+    displayName: Links
+  formula.tag_list:
+    displayName: Tags
+
+views:
+  - type: table
+    name: "All Notes"
+    order:
+      - file.name
+      - status
+      - difficulty
+      - formula.tag_list
+      - formula.last_updated
+      - formula.backlink_count
+    groupBy:
+      property: status
+      direction: ASC
+
+  - type: table
+    name: "Drafts & Needs Review"
+    filters:
+      or:
+        - 'status == "draft"'
+        - 'status == "needs-review"'
+    order:
+      - file.name
+      - status
+      - difficulty
+      - formula.last_updated
+
+  - type: table
+    name: "Recently Updated"
+    limit: 15
+    order:
+      - file.name
+      - status
+      - formula.last_updated
+      - formula.backlink_count
+
+  - type: table
+    name: "Orphans (No Backlinks)"
+    filters:
+      and:
+        - 'file.backlinks.length == 0'
+    order:
+      - file.name
+      - status
+      - formula.last_updated
