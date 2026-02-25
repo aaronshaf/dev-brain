@@ -347,8 +347,92 @@ Let agent determine:
 
 **Humans interact through agents**: Rather than humans directly manipulating systems, humans tell agents what they want, agents interact with systems.
 
+## Onboarding Collapse
+
+### Pattern: Weeks to Hours
+
+Agents compress codebase onboarding from weeks to hours. An engineer joining a new project can have an agent:
+- Summarize architecture and key abstractions
+- Explain conventions, patterns, and where things live
+- Walk through the critical paths (auth, data flow, deployment)
+- Answer "why is this done this way?" questions with full repo context
+
+**Implication: Surge Staffing**
+
+When onboarding takes hours instead of weeks, fixed project teams become less necessary:
+- Pull in a database expert for a week, then rotate them back — no ramp-up penalty
+- Spin up a "tiger team" for an urgent deadline without anyone spending days reading code
+- Rebalance headcount across projects quarterly instead of annually
+
+The org chart stops being a constraint on who can work on what.
+
+### Pattern: Agent as Onboarding Buddy
+
+```
+New engineer → Agent with full repo context → Productive in hours
+                    ↓
+              Answers architecture questions
+              Explains conventions and history
+              Guides through first contribution
+              Reviews first PRs with extra context
+```
+
+**Anti-pattern**: Writing onboarding docs manually that go stale. Let the agent generate context from the living codebase.
+
+## Productivity Economics
+
+### Output Volume, Not Just Speed
+
+The common framing is "agents make you faster." The more accurate framing from Anthropic's internal research: **agents increase output volume**.
+
+| Metric | What people expect | What actually happens |
+|---|---|---|
+| Time per task | Decreases | Decreases (but modest) |
+| Tasks completed | Same | Significantly increases |
+| New work unlocked | Same | Roughly a quarter of agent-assisted output is work nobody would have prioritized before |
+
+That last row is the real story. Engineers don't just do the same work faster — they tackle things that used to die in the backlog:
+- Internal tooling that makes everyone's life better but never justified a sprint
+- Minor UX friction and small bugs that accumulate into death-by-a-thousand-cuts
+- Quick prototypes to validate ideas before committing to a full build
+- Cleaning up years of technical debt that nobody had bandwidth for
+
+### Compounding Gains
+
+Productivity gains aren't linear — three forces reinforce each other:
+
+```mermaid
+graph TD
+    A[Better Models] --> C[Compounding<br/>Acceleration]
+    B[Better Workflows] --> C
+    D[Better Human<br/>Judgment] --> C
+
+    C --> R[Non-Linear<br/>Improvement]
+
+    style C fill:#d4edda
+```
+
+1. **Models get more capable** — longer context, better tool use, fewer hallucinations
+2. **Workflows get smarter** — engineers learn to decompose tasks, run agents in parallel, write better specs
+3. **Human judgment sharpens** — you get better at knowing what to delegate, when to intervene, and how to evaluate output
+
+These aren't independent. Smarter workflows only matter if the models can execute them. Better models are wasted if you don't know how to direct them. The flywheel accelerates as all three improve together.
+
+### Timeline Compression Changes What's Viable
+
+When a feature that used to take two sprints ships in two days, the calculus changes:
+- Projects that never survived prioritization become worth doing
+- Technical debt cleanup stops being "someday" work — agents can grind through backlogs
+- You can prototype three approaches and pick the best one instead of committing upfront
+- Competitors who still operate on sprint cycles can't keep up
+
+**The economics shift**: The question changes from "can we afford to build this?" to "can we afford not to?"
+
 ## References
 
 - [No Coding Before 10am - Michael Bloch](https://x.com/michaelxbloch/status/2022678437362598163)
+- [2026 Agentic Coding Trends Report](https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf?hsLang=en) - Anthropic
 - [[anti-patterns]]
+- [[multi-agent]]
+- [[security]]
 - [[tooling]]

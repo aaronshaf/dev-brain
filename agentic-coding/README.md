@@ -30,8 +30,13 @@ Agentic coding represents a paradigm shift from traditional software engineering
 
 - [[openclaw]] - OpenClaw AI agent deployment and patterns
 - [[code-factory]] - Repository architecture for autonomous agents
+- [[multi-agent]] - Orchestrator + specialist patterns, parallel context windows
 - [[taskmaster]] - AI-powered task management via MCP
 - [[ralph-looping]] - Simple autonomous coding loops
+
+### Security & Risk
+
+- [[security]] - Dual-use risk, agentic defense, security-first architecture
 
 ### Workflows & Integration
 
