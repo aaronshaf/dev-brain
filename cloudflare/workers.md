@@ -150,6 +150,28 @@ crypto.subtle.timingSafeEqual()  // Timing-safe comparison
 - Catches issues that Node.js-based tests miss
 - **Note**: Automatically injects `nodejs_compat` - confirm your `wrangler.jsonc` includes this flag if your code depends on Node.js built-in modules
 
+## February 2026 Updates
+
+### Subrequest Limit Removed
+
+Workers are **no longer limited to 1,000 subrequests per invocation**. Previously this was a hard cap that forced workarounds for fan-out patterns.
+
+### Windows Support for Python Workers
+
+Python Workers now run on Windows during local development, removing the Linux/macOS-only requirement.
+
+### React Server Components (RSC)
+
+Better support for React Server Components during local development with `wrangler dev`.
+
+### Wrangler Auto-Detection
+
+`wrangler deploy` now auto-detects your framework (Next.js, Remix, Astro, etc.) without needing a `wrangler.toml` configuration file.
+
+### Structured Log Queries (Observability)
+
+Write structured queries to filter and search Workers logs and traces, moving beyond basic tail-based log viewing.
+
 ## Example Worker
 
 ```typescript

@@ -19,6 +19,9 @@ Cloudflare lets you build and deploy apps that run instantly worldwide without m
 - **[[chat-agents]]** - Comparison of agent chat frameworks
 - **[[sandbox]]** - Containerized execution environments
 - **[[containers]]** - Docker containers on the edge
+- **[[r2]]** - S3-compatible object storage with zero egress
+- **[[queues]]** - Message queuing for async processing
+- **[[pipelines]]** - Event ingestion and streaming to R2
 - **[[workers-ai]]** - AI models, Workers AI, and inference
 - **[[ai-search]]** - AI Search and Vectorize for semantic search and RAG
 - **[[ai-gateway]]** - AI Gateway for routing, caching, and observability

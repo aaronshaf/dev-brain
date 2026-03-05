@@ -85,6 +85,14 @@ graph TD
 - **AI Gateway / AI Search** (Cloudflare internal): Built on DOs for high-throughput, sharded architecture.
 - **Per-workspace SaaS**: One DO per workspace, isolated 10 GB SQLite per tenant.
 
+## February 2026 Updates
+
+### `deleteAll()` Clears Alarms
+
+`deleteAll()` now also clears any pending alarms on the Durable Object. Previously, alarms survived a `deleteAll()` call, which could cause unexpected wake-ups on a "clean" object.
+
+Requires a **compatibility flag** to enable -- existing behavior is preserved without the flag.
+
 ## Related
 
 - [[agents]] — Agents use DOs for state management and execution guarantees

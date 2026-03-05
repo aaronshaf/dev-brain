@@ -168,6 +168,10 @@ Source: https://developers.cloudflare.com/workflows/reference/limits/
 
 **Use together:** Queues as high-throughput entry point → Workflows for complex processing
 
+## Visual Logic Diagrams (Feb 2026)
+
+The Cloudflare dashboard now shows visual logic diagrams for your Workflows, letting you see the step structure, branching, and flow directly in the UI without reading code.
+
 ## Pricing
 
 Available on both Free and Paid plans.

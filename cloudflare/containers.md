@@ -38,20 +38,24 @@ Reference: https://containers.cloudflare.com/
 - AI-generated code execution
 - Short-lived workloads
 
+## Concurrent Instance Limits (Feb 2026)
+
+Significantly increased limits, a 15x increase over previous caps:
+
+| Resource | Limit |
+|----------|-------|
+| Memory | 6 TiB |
+| vCPUs | 1,500 |
+| Disk | 30 TB |
+
+## Docker-in-Docker (Feb 2026)
+
+Containers now support Docker-in-Docker, enabling CI/CD pipelines, container builds, and nested container workflows directly on Cloudflare's edge.
+
 ## Beta Limitations
 
-⚠️ **Current constraints:**
 - No built-in autoscaling or load balancing (manual scaling in code)
-- Not designed for long-running or persistent containers
 - Limited orchestration tools for multi-service deployments
-
-## Roadmap
-
-**Planned improvements:**
-- Utilization-based autoscaling
-- Latency-aware load balancing
-- Increased container limits
-- Reduced log noise
 
 ## Example Deployment
 
